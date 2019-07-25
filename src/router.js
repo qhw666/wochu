@@ -5,6 +5,7 @@ import classify from './views/classify.vue'
 import cart from './views/cart.vue'
 import mine from './views/mine.vue'
 import wc from './views/tabber.vue'
+import details from './components/details.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -35,7 +36,7 @@ export default new Router({
         {
           path: '/wc/cart',
           name: 'cart',
-          component: cart
+          component: cart,      
         },
         {
           path: '/wc/mine',
@@ -44,5 +45,10 @@ export default new Router({
         },
       ]
     },
+    {
+      path: '/details/:id',
+      name:'details',
+      component: details
+    }
   ]
 })
