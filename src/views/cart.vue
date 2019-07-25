@@ -1,6 +1,6 @@
 <template>
     <div>
-        aaaa
+        aaaabbb
     </div>
 </template>
 <script>
