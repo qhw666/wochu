@@ -14,8 +14,7 @@
                    <img :src=item.checkicon>
                    <p>{{item.name}}</P>
                 </li>
-            </router-link>
-            
+         </router-link>
         </ul>
         </div>
        
