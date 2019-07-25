@@ -111,7 +111,11 @@ export default {
                 /* console.log(res) */
                 this.list1=res.data.data.userloving
             }),
-            this.$axios.get("http://api9.wochu.cn/client/v1/goods/imgLoopList?parameters=%7B%22goodsGuid%22:%22acba71ef-9d4e-4372-abc2-2b0329b16f30%22%7D")
+            this.$axios.get("http://api9.wochu.cn/client/v1/goods/imgLoopList?",{
+                params:{
+                    parameters: {"goodsGuid":this.$route.params.id}
+                }
+            })
             .then((res)=>{
                 this.listurl=res.data.data
                 console.log(res)

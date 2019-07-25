@@ -95,13 +95,24 @@
             </ul>
         </div>
         <div class="my-m14">
-
+            <img src="" alt="">
         </div>
     </div>
 </template>
 <script>
+import { constants } from 'crypto';
 export default {
-    
+/*     data() {
+        return {
+            list:[],
+        }
+    },
+    created(){
+        this.$axios.get("http://api9.wochu.cn/client/v1/shopcart/getCartGoodsCount?parameters=%7B%22deviceNumber%22%3A%220%22%7D")
+        .then((res)=>{
+            console.log(res)
+        })
+    } */
 }
 </script>
 <style>
