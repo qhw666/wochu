@@ -1,6 +1,6 @@
 <template>
     <div>
-        分类qweqwweqqwe
+        分类qweqwweqqweasdasdsad
     </div>
 </template>
 <script>
