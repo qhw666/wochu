@@ -7,6 +7,9 @@ import mine from './views/mine.vue'
 import wc from './views/tabber.vue'
 import details from './components/details.vue'
 import activityTemplate from './views/activityTemplate.vue'
+import packlist from './views/packlist.vue'
+import grouplist from './views/grouplist.vue'
+import group from './views/group.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -16,8 +19,23 @@ export default new Router({
     {
       path: '/',
       redirect:{
-        name:'home'
+      name:'home'
       }
+    },
+    {
+      path: '/packlist',
+      name: 'packlist',
+      component: packlist
+    },
+    {
+      path: '/grouplist',
+      name: 'grouplist',
+      component: grouplist
+    },
+    {
+      path: '/group',
+      name: 'group',
+      component: group
     },
     {
       path:'/',

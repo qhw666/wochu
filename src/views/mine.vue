@@ -95,11 +95,11 @@
             </ul>
         </div>
         <div class="my-m14">
-<<<<<<< HEAD
+
             <img src="../assets/b51022d5-c9d1-4e11-ae35-328aa7f551e8 (1).gif" alt="">
-=======
+
             <img src="../assets/b2a42c1ed21b0ef465cf4f5ad3c451da81cb3e71.jpg" alt="">
->>>>>>> 6326717741099758ccab48829d7097f26a8bbedf
+
         </div>
     </div>
 </template>
