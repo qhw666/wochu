@@ -53,7 +53,7 @@ export default new Router({
         {
           path: '/wc/cart',
           name: 'cart',
-          component: cart
+          component: cart,      
         },
         {
           path: '/wc/mine',
@@ -62,5 +62,10 @@ export default new Router({
         },
       ]
     },
+    {
+      path: '/details/:id',
+      name:'details',
+      component: details
+    }
   ]
 })

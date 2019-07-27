@@ -2,7 +2,7 @@
   <div class="nav">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="item in list">
+        <div class="swiper-slide" v-for="(item,index) in list" :key="index">
             <img :src="item.picUrl">
         </div>
       </div>
