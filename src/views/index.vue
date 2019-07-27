@@ -19,13 +19,31 @@
     </div>
     <div class="nav1">
       <ul>
-        <li v-for="item in list">
-          <img :src="item.imgUrl" />
+        <li>
+          <img src="https://img.wochu.cn/upload/a8105004-637f-4905-b56b-324d4f592249.jpg" />
+        </li>
+        <li @click="gopacklist">
+          <img src="https://img.wochu.cn/upload/9a8a2eb7-3491-4f38-a252-618cd3d38d44.jpg" />
+        </li>
+        <li @click="gogrouplist">
+          <img src="https://img.wochu.cn/upload/984f8c49-5af3-4cce-9cb8-19eba0855cb2.jpg" />
+        </li>
+        <li>
+          <img src="https://img.wochu.cn/upload/ce463dff-8675-4e0c-818c-0dcb5b214fe3.jpg" />
         </li>
       </ul>
       <ul>
-        <li v-for="item in list1">
-          <img :src="item.imgUrl" />
+        <li>
+          <img src="https://img.wochu.cn/upload/e6a12619-fe7e-4691-a52c-3fb357c89b6c.jpg" />
+        </li>
+        <li>
+          <img src="https://img.wochu.cn/upload/855ce9bc-5145-4207-8a14-514cfd20aac2.jpg" />
+        </li>
+        <li>
+          <img src="https://img.wochu.cn/upload/604ab541-8fe7-41b4-b532-521ff0386c44.jpg" />
+        </li>
+        <li>
+          <img src="https://img.wochu.cn/upload/249cc328-9897-4407-a0d5-8611a68b2449.jpg" />
         </li>
       </ul>
     </div>
@@ -35,12 +53,24 @@
           src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/f58332d2-ad98-4d10-aa96-28d1b8090d37.jpg"
         />
       </div>
-      <div class="broadcast-content">
+      <div class="broadcast-content" v-if="!flag">
         <div class="scroll-content">
           <swiper />
         </div>
-        <div class="show-all">
+        <div class="show-all" @click="showall">
           <img src="http://wmall.wochu.cn/h5/home/vueimg/down@3x.png" />
+        </div>
+      </div>
+      <div v-if="flag" class="aaa">
+        <div class="scroll-content1">
+          <ul>
+            <li class="bbb">【5折】清美内酯豆腐1.9元/400g</li>
+            <li class="bbb">电子发票需前往微商城自助申请</li>
+            <li class="bbb">【59减20券】邀请好友双方都可得！</li>
+          </ul>
+        </div>
+        <div @click="showone" class="show-all">
+          <img src="http://wmall.wochu.cn/h5/home/vueimg/up@3x.png" />
         </div>
       </div>
     </div>
@@ -51,56 +81,56 @@
       <xsth />
     </div>
     <div class="img-link">
-      <img src="https://img.wochu.cn/upload/8f07e583-1135-49de-a0b0-e5f222d6dfd3.jpg" alt />
+      <img src="https://img.wochu.cn/upload/8f07e583-1135-49de-a0b0-e5f222d6dfd3.jpg"/>
     </div>
     <div class="img-link">
-      <img src="https://img.wochu.cn/upload/3fd8dc02-835e-459b-bfb5-43a109bd946e.gif" alt />
+      <img src="https://img.wochu.cn/upload/3fd8dc02-835e-459b-bfb5-43a109bd946e.gif"/>
     </div>
     <div class="group-list3">
-      <div class="left-view">
-        <img src="https://img.wochu.cn/upload/2f510351-c865-4f5e-a604-86f22c9603a5.jpg" alt />
+      <div class="left-view" @click="gogrouplist">
+        <img src="https://img.wochu.cn/upload/2f510351-c865-4f5e-a604-86f22c9603a5.jpg"/>
       </div>
       <div class="right-view">
-        <div class="rt-top-view">
-          <img src="https://img.wochu.cn/upload/6148ed94-ee8f-4076-b238-1382425763bc.jpg" alt />
+        <div class="rt-top-view" @click="gopacklist">
+          <img src="https://img.wochu.cn/upload/6148ed94-ee8f-4076-b238-1382425763bc.jpg"/>
         </div>
-        <div class="rt-bottom-view">
-          <img src="https://img.wochu.cn/upload/9c33a199-3bec-4959-9986-9232a943084a.jpg" alt />
+        <div class="rt-bottom-view" @click="gogroup">
+          <img src="https://img.wochu.cn/upload/9c33a199-3bec-4959-9986-9232a943084a.jpg"/>
         </div>
       </div>
     </div>
     <div>
-      <mbdc/>
+      <mbdc />
     </div>
     <div>
-      <bzxc/>
+      <bzxc />
     </div>
     <div class="aa">
-      <wcyx/>
+      <wcyx />
     </div>
     <div class="aa">
-      <slsc/>
+      <slsc />
     </div>
     <div class="aa">
-      <xssg/>
+      <xssg />
     </div>
     <div class="aa">
-      <gyrl/>
+      <gyrl />
     </div>
     <div class="aa">
-      <yyqd/>
+      <yyqd />
     </div>
     <div class="aa">
-      <szxw/>
+      <szxw />
     </div>
     <div class="aa">
-      <lyxd/>
+      <lyxd />
     </div>
     <div class="aa">
-      <dxss/>
+      <dxss />
     </div>
     <div class="aa">
-      <lyfs/>
+      <lyfs />
     </div>
   </div>
 </template>
@@ -138,31 +168,43 @@ export default {
   },
   data() {
     return {
-      list: [],
-      list1: [],
+      flag: false
     };
   },
-  created() {
-    this.$axios
-      .get(
-        "http://api9.wochu.cn/client/v1/app/layoutamend?parameters=%7B%22version%22:%2210.0.0%22,%22source%22:%22H%22%7D"
-      )
-      .then(res => {
-        this.list = res.data.data.recommendedContent[0].items;
-      });
-    this.$axios
-      .get(
-        "http://api9.wochu.cn/client/v1/app/layoutamend?parameters=%7B%22version%22:%2210.0.0%22,%22source%22:%22H%22%7D"
-      )
-      .then(res => {
-        this.list1 = res.data.data.recommendedContent[1].items;
-      });
-  }
+  methods: {
+    gopacklist() {
+      this.$router.push("/packlist/");
+    },
+    gogrouplist() {
+      this.$router.push("/grouplist/");
+    },
+    gogroup() {
+      this.$router.push("/group/");
+    },
+    showall() {
+      this.flag = true;
+    },
+    showone() {
+      this.flag = false;
+    }
+  },
+  created() {}
 };
 </script>
 <style scoped>
-.aa{
-  margin-top:7.6rem;
+.aa {
+  margin-top: 7.6rem;
+}
+.aaa {
+  width: 6.42rem;
+  float: right;
+}
+.bbb {
+  height: .66rem;
+  padding: 0.24rem 0.9rem 0.24rem 0.26rem;
+  color: #001e00;
+  font-size: 0.26rem;
+  border-bottom: 1px solid #e5e5e5;
 }
 header {
   position: fixed;
@@ -242,6 +284,7 @@ header div:nth-child(3) img {
 .wochu-broadcast {
   height: 1.16rem;
   border-top: 1px solid #e5e5e5;
+  position: relative;
 }
 .broadcast-title {
   width: 0.84rem;
@@ -266,6 +309,12 @@ header div:nth-child(3) img {
   float: left;
   margin-left: 0.25rem;
 }
+.scroll-content1 {
+  background:#fff;
+  width: 5.27rem;
+  float: left;
+  margin-left: 0.25rem;
+}
 .show-all {
   height: 1.14rem;
   width: 0.9rem;
@@ -278,7 +327,7 @@ header div:nth-child(3) img {
   height: 0.16rem;
 }
 .img-link {
-  background: #f8f8f8;
+  background: #fff;
 }
 .img-link img {
   width: 7.5rem;
