@@ -130,16 +130,39 @@ export default {
     gotodetails(id) {
       this.$router.push("/details/" + id);
     },
-    goback() {
-      this.$router.replace("/wc/cart");
-    }
-  },
-  watch: {
-    $route(to, from, next) {
-      window.scrollTo(0, 0);
-      if (to.name === "details") {
-        this.getData(); // 在此调用函数
-      }
+    methods:{
+        getData(){
+            this.$axios.get("http://api9.wochu.cn/api/goods/goods/detail?",{
+            params:{
+                goodsGuid:this.$route.params.id
+            }
+            }).then((res)=>{
+                this.list=res.data.data
+                /* console.log(res) */
+            }),
+            this.$axios.get("http://api9.wochu.cn/client/v1/goods/getGoodsRelevantList?parameters=%7B%22goodsGuid%22:%227cb3b429-8ffd-4ebf-9a0c-48bfc8d169d9%22%7D")
+            .then((res)=>{
+                /* console.log(res) */
+                this.list1=res.data.data.userloving
+            }),
+            this.$axios.get("http://api9.wochu.cn/client/v1/goods/imgLoopList?",{
+                params:{
+                    parameters: {"goodsGuid":this.$route.params.id}
+                }
+            })
+            .then((res)=>{
+                this.listurl=res.data.data
+                console.log(res)
+            })
+
+        },
+        gotodetails(id){
+            this.$router.push("/details/"+id)
+        },
+        goback(){
+            this.$router.replace("/wc/cart")
+        }
+
     },
     listurl() {
       this.$nextTick(() => {
