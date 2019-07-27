@@ -6,6 +6,7 @@ import cart from './views/cart.vue'
 import mine from './views/mine.vue'
 import wc from './views/tabber.vue'
 import details from './components/details.vue'
+import activityTemplate from './views/activityTemplate.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -49,6 +50,11 @@ export default new Router({
       path: '/details/:id',
       name:'details',
       component: details
+    },
+    {
+      path:'/activityTemplate',
+      name: 'activityTemplate',
+      component: activityTemplate
     }
   ]
 })

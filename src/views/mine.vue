@@ -95,7 +95,7 @@
             </ul>
         </div>
         <div class="my-m14">
-            <img src="" alt="">
+            <img src="../assets/b51022d5-c9d1-4e11-ae35-328aa7f551e8 (1).gif" alt="">
         </div>
     </div>
 </template>
@@ -258,6 +258,7 @@ export default {
     .my-m{
         width: 100%;
         height: 5.58rem;
+        position: relative;
     }
 
 </style>
