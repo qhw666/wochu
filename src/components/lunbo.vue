@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <div class="swiper-container swiper1">
+    <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="item in list">
             <img :src="item.picUrl">
@@ -29,7 +29,7 @@ export default {
   watch: {
     list() {
       this.$nextTick(() => {
-        var mySwiper = new Swiper(".swiper1", {
+        var mySwiper = new Swiper(".swiper-container", {
           autoplay: {
             delay: 2500,
             disableOnInteraction: false,
@@ -47,10 +47,10 @@ export default {
 };
 </script>
 <style>
-.swiper1 {
+.swiper-container {
   height: 3.32rem;
 }
-.swiper1 .swiper-wrapper .swiper-slide img {
+.swiper-slide img {
   width: 100%;
   height: 100%;
 }
